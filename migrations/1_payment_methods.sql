@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS payment_methods(id integer primary key autoincrement, description text);

@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS cost_centers(id integer primary key autoincrement, description text);
