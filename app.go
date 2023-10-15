@@ -31,8 +31,10 @@ LIST
 6. Last transaction
 7. Current month transactions
 
-Pick an option:
-`)
+CSV
+8. Import from csv
+
+Pick an option:`)
 }
 
 func (a App) ListenForAction() {
@@ -59,6 +61,8 @@ func (a App) ListenForAction() {
 		a.triggerAction("get-last-transaction")
 	case 7:
 		a.triggerAction("get-month-transactions")
+	case 8:
+		a.triggerAction("import-csv")
 	default:
 		fmt.Println("Unrecognized option:", opt)
 		os.Exit(1)

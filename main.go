@@ -68,6 +68,10 @@ func createActions(prompt common.Prompt) []actions.Action {
 		Repository: *transactionRepository,
 	}
 
+	importCSVAction := &actions.ImportCSVAction{
+		TransactionRepository: *transactionRepository,
+	}
+
 	actionList = append(
 		actionList,
 		createCostCenterAction,
@@ -77,6 +81,7 @@ func createActions(prompt common.Prompt) []actions.Action {
 		createTransactionAction,
 		getLastTransactionAction,
 		getMonthTransactionAction,
+		importCSVAction,
 	)
 
 	return actionList
