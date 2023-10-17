@@ -2,6 +2,7 @@ package helpers
 
 import (
 	"fin/common"
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -18,7 +19,7 @@ func ToBool(s string) bool {
 	return r
 }
 
-func ToValue(s string) float32 {
+func FromBR(s string) float32 {
 	i := strings.Replace(s, "R$", "", -1)
 	var y string
 	if strings.Count(s, ".") > 0 {
@@ -31,4 +32,16 @@ func ToValue(s string) float32 {
 	v, err := strconv.ParseFloat(j, 32)
 	common.Error{}.CheckErr(err)
 	return float32(v)
+}
+
+func ToBR(value float32) string {
+	return fmt.Sprintf("%f", value)
+}
+
+func FromInt(i int) string {
+	return strconv.Itoa(i)
+}
+
+func FromBool(b bool) string {
+	return strconv.FormatBool(b)
 }

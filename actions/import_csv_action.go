@@ -2,7 +2,6 @@ package actions
 
 import (
 	"fin/common"
-	"fin/helpers"
 	"fin/models"
 	"fin/repositories"
 )
@@ -20,17 +19,9 @@ func (ica ImportCSVAction) Execute() {
 
 	csvData := reader.Read("transactions.csv")
 
-	for _, l := range csvData[1:] {
-		tx := models.Transaction{
-			Description:   l[0],
-			Value:         helpers.ToValue(l[1]),
-			CostCenter:    l[2],
-			Day:           helpers.ToInt(l[3]),
-			Month:         l[4],
-			PaymentMethod: l[5],
-			Ignore:        helpers.ToBool(l[6]),
-			Operation:     l[7],
-		}
+	txs := models.CSVFormat{}.ToTransactionList(csvData[1:])
+
+	for _, tx := range txs {
 		ica.TransactionRepository.Save(tx)
 	}
 }

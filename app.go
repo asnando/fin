@@ -33,6 +33,7 @@ LIST
 
 CSV
 8. Import from csv
+9. Export to csv
 
 Pick an option:`)
 }
@@ -63,6 +64,8 @@ func (a App) ListenForAction() {
 		a.triggerAction("get-month-transactions")
 	case 8:
 		a.triggerAction("import-csv")
+	case 9:
+		a.triggerAction("export-csv")
 	default:
 		fmt.Println("Unrecognized option:", opt)
 		os.Exit(1)
